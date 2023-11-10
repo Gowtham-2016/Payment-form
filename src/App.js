@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import "./App.css";
+import SnackbarProvider from "./components/SnackbarComponent/SnackbarProvider";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Payment } from "./pages/Payment";
+import Login from "./pages/Login";
 
-function App() {
+export default function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SnackbarProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Payment />} />
+          <Route path='/login' element={<Login />} />
+        </Routes>
+      </Router>
+    </SnackbarProvider>
   );
 }
-
-export default App;

@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Build Instructions
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Run `npm i` to install the node-modules
+Run `npm start` to run the application, It should open the app at `http://localhost:3000`.
 
-## Available Scripts
+# Usage Instructions
 
-In the project directory, you can run:
+1. Once the app is running, You should see a button named `Make Payment`.
+2. Clicking on it should open the form to make the payment.
+3. Type a valid email in the `To` field, Select `INR` or `USD` in the `From` dropdown, Type in an amount in the `Amout` field then at this point the `Submit` button should be enabled.
+4. Clicking on `Submit` should show the loading button and an alert should pop up stating - `Payment Success!`
 
-### `npm start`
+# What else I would have implemented had you more time to work on it?
+1. I've used the default components from Material UI, So there was not much custom UI involved in this project.
+2. Would've use tailwind/styled-components/css modules for customizing the CSS.
+3. Inline validation for the Form fields, instead of doing it on submit.
+4. Doc-blocks explaing the functions and the data flow.
+5. More test cases, Example - test cases for form validations.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# List down all assumptions you made while designing/implementing
+1. Based on the requirement, this would be a feature for making payments which would be one of the critical components in any application. 
+2. Since we should restrict the user from clicking the Submit button multiple times to make a payment as it might initate multiple payments, we can either use a debounce fn or disable the button after the first click. To solve this problem, In this app i'm listening for the submit button click and showing a loader inside the submit button until the api returns a response.
+3. Coming to the modularisation, Most of the logic is in a single component which is PaymentDialog.js, Rest of the components are mostly for the UI blocks which can be reused.
+4. Component-Based Architecture: The application is organized into components, following the component-based architecture that React promotes. Components like PaymentDialog, PaymentForm, SnackbarProvider, etc., encapsulate their logic and present a clear structure.
+5. Reusable Components: Components are designed to be reusable. For example, the SnackbarProvider can be reused throughout the application to handle notifications.
+6. Context API: The useContext hook is used in the SnackbarProvider to manage global state (snackbar notifications) and provide it to descendant components via context.
+7. Separation of Concerns: Components are organized into different directories based on their concerns (e.g., components, api, pages). This helps in maintaining a clear separation of concerns and makes the codebase more maintainable.
