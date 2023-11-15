@@ -1,9 +1,20 @@
 import React from 'react';
 import { TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 
-const PaymentForm = ({ formData, onChange }) => {
+export interface PaymentFormData {
+  to: string;
+  from: string;
+  amount: number;
+  description: string;
+}
 
-  const handleInputChange = (field, value) => {
+export interface PaymentFormProps {
+  formData: PaymentFormData;
+  onChange: (newFormData: PaymentFormData) => void;
+}
+
+const PaymentForm: React.FC<PaymentFormProps> = ({ formData, onChange }) => {
+  const handleInputChange = (field: keyof PaymentFormData, value: string): void => {
     onChange({
       ...formData,
       [field]: value,
